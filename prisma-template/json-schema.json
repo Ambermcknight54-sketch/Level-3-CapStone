@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "products": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "src": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reviews"
+          }
+        }
+      }
+    },
+    "students": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "level": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "subjects": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "users": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "password": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reviews"
+          }
+        }
+      }
+    },
+    "reviews": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stars": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "product_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "user_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "products": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/products"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "users": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/users"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "products": {
+      "$ref": "#/definitions/products"
+    },
+    "students": {
+      "$ref": "#/definitions/students"
+    },
+    "subjects": {
+      "$ref": "#/definitions/subjects"
+    },
+    "users": {
+      "$ref": "#/definitions/users"
+    },
+    "reviews": {
+      "$ref": "#/definitions/reviews"
+    }
+  }
+}

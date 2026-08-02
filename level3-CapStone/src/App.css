@@ -1,0 +1,22 @@
+h1 {
+  font-size: 50px;
+}
+p {
+  font-family: "Georgia", serif;
+  color: #220463;
+  font-size: 16px;
+}
+html {
+  background-color: cadetblue;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Tell the main content area to grow and take up all remaining empty space */
+.main-content {
+  flex: 1;
+}
