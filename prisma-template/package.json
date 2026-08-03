@@ -14,5 +14,6 @@
     "dotenv": "^17.4.2",
     "prisma": "^6.19.3",
     "prisma-json-schema-generator": "^5.1.5"
-  }
+  },
+  "keywords": []
 }

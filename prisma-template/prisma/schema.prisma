@@ -33,12 +33,15 @@ model students {
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model subjects {
   id          BigInt    @default(autoincrement())
   created_at  DateTime  @default(now()) @db.Timestamptz(6)
   name        String
-  description String    @id
+  description String
   date        DateTime? @db.Date
+
+  @@ignore
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
@@ -54,9 +57,9 @@ model users {
 model reviews {
   id         BigInt    @id @default(autoincrement())
   created_at DateTime  @default(now()) @db.Timestamptz(6)
-  stars      Int?      @db.SmallInt
+  stars      Int       @db.SmallInt
   product_id BigInt?
-  user_id    BigInt?
+  users_id   BigInt
   products   products? @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  users      users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users      users     @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

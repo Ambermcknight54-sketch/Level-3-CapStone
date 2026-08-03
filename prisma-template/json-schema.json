@@ -52,31 +52,6 @@
         }
       }
     },
-    "subjects": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "created_at": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "date": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "date-time"
-        }
-      }
-    },
     "users": {
       "type": "object",
       "properties": {
@@ -118,10 +93,7 @@
           "format": "date-time"
         },
         "stars": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": "integer"
         },
         "product_id": {
           "type": [
@@ -129,11 +101,8 @@
             "null"
           ]
         },
-        "user_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+        "users_id": {
+          "type": "integer"
         },
         "products": {
           "anyOf": [
@@ -146,14 +115,7 @@
           ]
         },
         "users": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/users"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/users"
         }
       }
     }
@@ -165,9 +127,6 @@
     },
     "students": {
       "$ref": "#/definitions/students"
-    },
-    "subjects": {
-      "$ref": "#/definitions/subjects"
     },
     "users": {
       "$ref": "#/definitions/users"

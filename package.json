@@ -1,0 +1,21 @@
+{
+  "name": "level-3-capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ambermcknight54-sketch/Level-3-CapStone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ambermcknight54-sketch/Level-3-CapStone/issues"
+  },
+  "homepage": "https://github.com/Ambermcknight54-sketch/Level-3-CapStone#readme"
+}
