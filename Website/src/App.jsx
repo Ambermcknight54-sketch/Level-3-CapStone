@@ -15,7 +15,7 @@ import { Home } from "./pages/Home.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { WebClient } from "./pages/WebClient.jsx";
 import { Navbar } from "./components/Navbar.jsx";
-import Products from "./pages/Products.jsx";
+import { Products } from "./pages/Products.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +29,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/webclient" element={<WebClient />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/extras" element={<Extras />} />
           </Routes>
         </main>
 

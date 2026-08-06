@@ -1,24 +1,46 @@
-export function useItems() {
-  const items = [
-    {
-      id: 1,
-      name: "Elegant Diamond & Gold Collection",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJpyg5SQqmg0WIbnDwV3hlwcTIqkJxb6kyrQhlfHHL9A&s=10",
-      alt: "Gold & Diamond Jewelry Collection",
-    },
-    {
-      id: 2,
-      name: "Luxury Necklaces & Gemstones",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCXLSsnO_rVukJiDOQocFhEpPjlG9hHDnLEzpy0hP5tA&s=10",
-      alt: "Luxury Necklaces & Gemstones",
-    },
-    {
-      id: 3,
-      name: "Handcrafted Fine Gold Rings",
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZUEWe0Fh2Wg8OOcbz19A6nZzFUiggrm8xKiN9mzadew&s=1",
-      alt: "Handcrafted Fine Gold Rings",
-    },
-  ];
+export function useProducts(prisma) {
+  const [data, setData] = useState();
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+  return [data, handleSubmit];
 
-  return { items };
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const where = {};
+
+    const productId = form.elements.productId.value;
+    const productName = form.elements.productName.value;
+    const productPrice = form.elements.value;
+
+    if (productId) where.id = productId;
+    if (productName) where.name = productName;
+    if (productPrice) where.price = { lte: maxPrice };
+
+    const results = await prisma.products.findMany({ where });
+
+    setData(results);
+  }
 }
+// const [data, setData] = useState([]);
+
+//   async function handleSubmit(event) {
+//     event.preventDefault();
+//     const form = event.target;
+
+//     const productId = form.elements.productId.value;
+//     const productName = form.elements.productName.value;
+//     const productPrice = form.elements.productPrice.value;
+
+//     // Send params to your backend API route (e.g., /api/products)
+//     const params = new URLSearchParams();
+//     if (productId) params.append("id", productId);
+//     if (productName) params.append("name", productName);
+//     if (productPrice) params.append("price", productPrice);
+
+//     const response = await fetch(`/api/products?${params.toString()}`);
+//     const results = await response.json();
+
+//     setData(results);
+//   }

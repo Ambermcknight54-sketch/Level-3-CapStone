@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Carousel, initTWE } from "tw-elements";
 
-export function Carousel() {
+export function CarouselItems() {
   useEffect(componentDidMount, []);
   return (
     <div
