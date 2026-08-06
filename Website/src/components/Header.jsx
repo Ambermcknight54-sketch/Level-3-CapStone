@@ -4,7 +4,7 @@ export function Header() {
       <nav>
         <a href="/">Home</a> | <a href="/WebClient">Webclient</a>
       </nav>
-      <h1> Conditionally Render with an Authentication Component. </h1>
+      <h1> Fine Jewerly Colletion</h1>
     </header>
   );
 }

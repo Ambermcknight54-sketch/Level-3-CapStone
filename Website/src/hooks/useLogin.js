@@ -1,5 +1,3 @@
-// src/hooks/useLogin.js
-
 import { useState, useEffect } from "react";
 
 export function useLogin(prisma, login) {
@@ -10,41 +8,41 @@ export function useLogin(prisma, login) {
   return user;
 
   function componentDidUpdate() {
-    // 1. Retrieve string from localStorage
-    const userString = localStorage.getItem("user");
-
-    // 2. Safely parse JSON only if string exists
-    if (userString) {
-      try {
-        const storedUser = JSON.parse(userString);
-
-        // Prevent infinite render loops by checking if user changed
-        if (JSON.stringify(user) !== JSON.stringify(storedUser)) {
-          setUser(storedUser);
-        }
-      } catch (error) {
-        console.error("Failed to parse user from localStorage:", error);
-      }
-    }
-
-    // 3. Keep conditional check strictly inside componentDidUpdate
+    // 1. Check database if credentials are provided
     if (prisma && login) {
       handleLogin();
+    } else {
+      // 2. Otherwise load existing session from localStorage
+      const userString = localStorage.getItem("user");
+
+      if (userString) {
+        try {
+          const storedUser = JSON.parse(userString);
+          setUser(storedUser);
+        } catch (error) {
+          console.error("Failed to parse user from localStorage:", error);
+        }
+      }
     }
   }
 
   async function handleLogin() {
-    const foundUser = await prisma.users.findFirst({
-      where: {
-        email: login.email,
-        password: login.password,
-      },
-    });
+    try {
+      const foundUser = await prisma.users.findFirst({
+        where: {
+          email: login.email,
+          password: login.password,
+        },
+      });
 
-    const userString = JSON.stringify(foundUser);
-    localStorage.setItem("user", userString);
-
-    setUser(foundUser);
+      if (foundUser) {
+        const userString = JSON.stringify(foundUser);
+        localStorage.setItem("user", userString);
+        setUser(foundUser);
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   }
 }
 
