@@ -1,7 +1,7 @@
 import { useRippleTWE } from "../hooks/useRippleTWE";
 import { useRedirect } from "../hooks/useRedirect";
 
-export function Page404() {
+export function Extras() {
   useRippleTWE();
   const handleRedirect = useRedirect("/", 5000);
 

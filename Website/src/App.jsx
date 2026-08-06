@@ -16,6 +16,7 @@ import { Footer } from "./components/Footer.jsx";
 import { WebClient } from "./pages/WebClient.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { Products } from "./pages/Products.jsx";
+import { Extras } from "./components/Extras.jsx";
 function App() {
   return (
     <BrowserRouter>

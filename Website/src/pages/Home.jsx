@@ -1,7 +1,6 @@
 export function Home() {
   return (
     <main>
-      <h1>Home Page</h1>
       <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
         <div className="-m-1 flex flex-wrap md:-m-2">
           <div className="flex w-1/3 flex-wrap">
@@ -58,6 +57,20 @@ export function Home() {
               />
             </div>
           </div>
+        </div>
+
+        {/* Featured Jewelry Paragraph Card */}
+        <div className="block rounded-lg bg-white p-6 shadow-md border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 max-w-xl mx-auto my-8">
+          <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+            Discover Unique Elegance Every Month
+          </h5>
+          <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+            Our jewelry collection offers a curated experience where timeless
+            craft meets fresh style. By highlighting monthly featured products,
+            we bring you handpicked, limited-run pieces and seasonal designs
+            crafted to elevate your personal style and keep your look
+            effortlessly up to date.
+          </p>
         </div>
       </div>
     </main>
