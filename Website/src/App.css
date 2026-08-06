@@ -1,9 +1,10 @@
 h1 {
   font-size: 50px;
+  color: blue;
 }
 p {
   font-family: "Georgia", serif;
-  color: #220463;
+  color: #6741b7;
   font-size: 16px;
 }
 html {
