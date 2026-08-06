@@ -46,11 +46,12 @@ model subjects {
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model users {
-  id         BigInt    @id @default(autoincrement())
-  created_at DateTime  @default(now()) @db.Timestamptz(6)
-  email      String?
-  password   String?
-  reviews    reviews[]
+  id            BigInt          @id @default(autoincrement())
+  created_at    DateTime        @default(now()) @db.Timestamptz(6)
+  email         String?
+  password      String?
+  reviews       reviews[]
+  reviews_items reviews_items[]
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
@@ -62,4 +63,27 @@ model reviews {
   users_id   BigInt
   products   products? @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   users      users     @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model items {
+  id            BigInt          @id @default(autoincrement())
+  created_at    DateTime        @default(now()) @db.Timestamptz(6)
+  name          String
+  src           String
+  price         Decimal         @db.Decimal
+  reviews_items reviews_items[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model reviews_items {
+  id         BigInt   @id(map: "reviews_duplicate_pkey") @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  stars      Int      @db.SmallInt
+  items_id   BigInt?
+  users_id   BigInt
+  users      users    @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "reviews_duplicate_users_id_fkey")
+  items      items?   @relation(fields: [items_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

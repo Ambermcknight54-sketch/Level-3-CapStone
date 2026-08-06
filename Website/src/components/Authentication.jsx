@@ -1,5 +1,5 @@
-import { Login } from "../components/Login";
-import { Logout } from "../components/Logout";
+import { Login } from "./Login";
+import { Logout } from "./Logout";
 
 export function Authentication({ setLogin, user }) {
   let component;

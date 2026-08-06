@@ -10,12 +10,12 @@
 // import { Footer } from "./components/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Header } from "./components/Header";
-import { Home } from "./pages/Home";
-import { Footer } from "./components/Footer";
-import { WebClient } from "./pages/WebClient";
-import { Navbar } from "./components/Navbar";
-import Products from "./pages/Products";
+import { Header } from "./components/Header.jsx";
+import { Home } from "./pages/Home.jsx";
+import { Footer } from "./components/Footer.jsx";
+import { WebClient } from "./pages/WebClient.jsx";
+import { Navbar } from "./components/Navbar.jsx";
+import Products from "./pages/Products.jsx";
 function App() {
   return (
     <BrowserRouter>
