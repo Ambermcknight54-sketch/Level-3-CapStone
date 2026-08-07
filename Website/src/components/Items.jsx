@@ -1,5 +1,3 @@
-import { CarouselItems } from "./CarouselItems";
-
 export function Items() {
   return (
     <main>
@@ -69,9 +67,6 @@ export function Items() {
             </label>
           </div>
         </fieldset>
-        {/* <output>
-        <dl>{data.map(toDetails)}</dl>
-      </output> */}
       </form>
     </main>
   );

@@ -16,10 +16,10 @@ export function Logout({ setLogin }) {
       password: "",
     };
 
-    // 3. Save and persist empty user credentials to localStorage
+    // Save and persist empty user credentials to localStorage
     localStorage.setItem("user", JSON.stringify(emptyCredentials));
 
-    // 4. Use setLogin to save the data object in state
+    // Use setLogin to save the data object in state
     setLogin(emptyCredentials);
   }
 
@@ -65,7 +65,6 @@ export function Logout({ setLogin }) {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
-                    q
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor">
@@ -105,22 +104,5 @@ export function Logout({ setLogin }) {
         </div>
       </div>
     </>
-  );
-}
-
-import {} from "../hooks/";
-
-export function Logout({ setLogin }) {
-  function handleLogout() {
-    setLogin(null);
-  }
-
-  return (
-    <button
-      type="button"
-      onClick={handleLogout}
-      className="inline-block rounded bg-red-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 focus:outline-none">
-      Log Out
-    </button>
   );
 }

@@ -9,33 +9,31 @@
 // import { Navbar } from "./components/Navbar";
 // import { Footer } from "./components/Footer";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Header } from "./components/Header.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { Home } from "./pages/Home.jsx";
 import { Products } from "./pages/Products.jsx";
-// import { Page404 } from "./components/Page404.jsx";
-// import { SignIn } from "./pages/SignIn.jsx";
+import { SignIn } from "./pages/SignIn.jsx";
+import { Page404 } from "./components/Page404.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app-container">
-        <Header />
+    <div className="app-container">
+      <Header />
 
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/signin" element={<SignIn />} /> */}
-            <Route path="/products" element={<Products />} />
-            {/* <Route path="*" element={<Page404 />} /> */}
-          </Routes>
-        </main>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </main>
 
-        <Footer />
-      </div>
-    </BrowserRouter>
+      <Footer />
+    </div>
   );
 }
 

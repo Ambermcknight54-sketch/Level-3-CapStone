@@ -68,12 +68,6 @@ export function Products() {
       <p>{"didMount: " + didMount}</p>
 
       <section>{products}</section>
-
-      {/* <form onSubmit={handleSubmit}>
-        <label htmlFor="productsInput"> Products:</label>
-        <input type="text" name="products" id="productsInput" />
-        <button type="submit">Submit</button>
-      </form> */}
     </main>
   );
 }
@@ -157,6 +151,11 @@ export function Products() {
 //     );
 //   }
 
+// {/* <form onSubmit={handleSubmit}>
+//   <label htmlFor="productsInput"> Products:</label>
+//   <input type="text" name="products" id="productsInput" />
+//   <button type="submit">Submit</button>
+// </form> */}
 // return (
 //     <main className="container mx-auto p-6 space-y-6">
 //       {/* Jewelry Slides Carousel */}

@@ -2,9 +2,7 @@ import { Fragment, useState } from "react";
 import { usePrisma } from "../hooks/usePrisma";
 import { useLogin } from "../hooks/useLogin";
 import { DbPassword } from "../components/DbPassword";
-// import { Page404 } from "../components/Page404";
 import { Login } from "../components/Login";
-import { Logout } from "../components/Logout";
 
 export function SignIn() {
   const [password, setPassword] = useState();
@@ -20,9 +18,6 @@ export function SignIn() {
     <main>
       <DbPassword setPassword={setPassword} />
       {component}
-      <Login />
-      <Logout />
-      <Page404 />
       <output>
         <dl>{data.map(toDetails)}</dl>
       </output>
@@ -30,18 +25,18 @@ export function SignIn() {
   );
 }
 
-// function toDetails(item, index) {
-//   const key = index + item.name;
-//   return (
-//     <Fragment key={key}>
-//       <dt>{item.name}</dt>
-//       <dd>
-//         <img src={item.src} alt={item.name} />
-//         {item.price}
-//       </dd>
-//     </Fragment>
-//   );
-// }
+function toDetails(item, index) {
+  const key = index + item.name;
+  return (
+    <Fragment key={key}>
+      <dt>{item.name}</dt>
+      <dd>
+        <img src={item.src} alt={item.name} />
+        {item.price}
+      </dd>
+    </Fragment>
+  );
+}
 
 // function componentDidUpdate() {
 //   if (password) {

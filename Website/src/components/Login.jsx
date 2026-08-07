@@ -2,7 +2,6 @@ import { useInputTWE } from "../hooks/useInputTWE";
 import { useLogin } from "../hooks/useLogin";
 
 export function Login({ setLogin }) {
-  useInputTWE();
   useLogin();
   return (
     <form onSubmit={handleSubmit}>
