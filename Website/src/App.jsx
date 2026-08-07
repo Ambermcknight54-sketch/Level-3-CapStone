@@ -16,7 +16,8 @@ import { Footer } from "./components/Footer.jsx";
 import { WebClient } from "./pages/WebClient.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { Products } from "./pages/Products.jsx";
-import { Extras } from "./components/Extras.jsx";
+import { Page404 } from "./components/Page404.jsx";
+
 function App() {
   return (
     <BrowserRouter>
@@ -30,7 +31,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/webclient" element={<WebClient />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/extras" element={<Extras />} />
+
+            <Route path="*" element={<Page404 />} />
           </Routes>
         </main>
 
