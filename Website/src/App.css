@@ -1,6 +1,6 @@
 h1 {
   font-size: 50px;
-  color: blue;
+  color: hsl(244, 100%, 50%);
 }
 p {
   font-family: "Georgia", serif;
@@ -17,7 +17,10 @@ html {
   min-height: 100vh;
 }
 
-/* Tell the main content area to grow and take up all remaining empty space */
 .main-content {
   flex: 1;
+}
+
+main {
+  background-color: #3b82f6;
 }
