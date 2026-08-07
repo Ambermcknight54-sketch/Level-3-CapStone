@@ -1,23 +1,32 @@
 import { useRippleTWE } from "../hooks/useRippleTWE";
 import { useRedirect } from "../hooks/useRedirect";
+import pictureSrc from "../assets/404page-error.png";
 
 export function Page404() {
   useRippleTWE();
   const handleRedirect = useRedirect("/", 5000);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen text-center p-6">
-      <h1>404 - Page Not Found</h1>
-      <p>You will be automatically redirected to the home page in 5 seconds.</p>
-
-      <button
-        type="button"
-        data-twe-ripple-init
-        data-twe-ripple-color="light"
-        className="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-        onClick={handleRedirect}>
-        Go Home Now
-      </button>
+    <main>
+      <div className="block rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark">
+        <a href="#!">
+          <img class="rounded-t-lg" src={pictureSrc} alt="" />
+        </a>
+        <div className="p-6 text-surface dark:text-white">
+          <h5 className="mb-2 text-xl font-medium leading-tight">
+            Page Not Found
+          </h5>
+          <p className="mb-4 text-base">This page will redirect in 5 seconds</p>
+          <button
+            onClick={handleRedirect}
+            type="button"
+            className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+            data-twe-ripple-init
+            data-twe-ripple-color="light">
+            Navigate to the Home Page Button
+          </button>
+        </div>
+      </div>
     </main>
   );
 }

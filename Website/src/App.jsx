@@ -29,9 +29,8 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/webclient" element={<WebClient />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/products" element={<Products />} />
-
             <Route path="*" element={<Page404 />} />
           </Routes>
         </main>

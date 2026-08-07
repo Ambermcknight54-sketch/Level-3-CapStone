@@ -5,7 +5,7 @@ import { useLogin } from "../hooks/useLogin";
 import { DbPassword } from "../components/DbPassword";
 import { Authentication } from "../components/Authentication";
 
-export function WebClient() {
+export function Login() {
   useInputTWE();
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
