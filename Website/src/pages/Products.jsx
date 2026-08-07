@@ -1,14 +1,14 @@
+import { useEffect, useState } from "react";
 import { CarouselItems } from "../components/CarouselItems";
-import { useState } from "react";
-import { useEffect } from "react";
+import { Search } from "../components/Search";
 
 export function Products() {
-  CarouselItems();
-
   const [products, setProducts] = useState([]);
+  const [searchData, setSearchData] = useState([]);
   const [didMount, setDidMount] = useState(false);
 
-  // Defined inside Products so they inherit setDidMount and setProducts closures
+  useEffect(componentDidMount, []);
+
   function componentDidMount() {
     setDidMount(true);
     handleData();
@@ -18,59 +18,199 @@ export function Products() {
     try {
       const response = await fetch("https://fakestoreapi.com/products");
       const results = await response.json();
-      const details = results.map(toProducts);
-      setProducts(details);
+
+      setProducts(results);
     } catch (error) {
-      console.error("Error fetching initial data:", error);
+      console.error("Error fetching products:", error);
     }
   }
 
-  function toProducts(dataItem, index) {
-    const key = index + dataItem.id;
+  function toProducts(product, index) {
+    const key = index + product.id;
+
     return (
-      <details key={key}>
-        <summary>{dataItem.title}</summary>
-        <figure>
-          <img src={dataItem.image} alt={dataItem.title} />
+      <details key={key} className="mb-4 rounded border p-4">
+        <summary className="cursor-pointer font-bold">{product.title}</summary>
+
+        <figure className="mt-4">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="h-48 w-48 object-contain"
+          />
+
           <figcaption>
-            ${dataItem.price} - {dataItem.category}
+            ${product.price} - {product.category}
           </figcaption>
         </figure>
       </details>
     );
   }
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const data = {
-      data: form.elements.products.value,
-    };
+  const productName = searchData[0]?.name || "";
 
-    const dataString = new URLSearchParams(data).toString();
-    try {
-      const response = await fetch(
-        `https://fakestoreapi.com/products?${dataString}`,
-      );
-      const results = await response.json();
-      const details = results.map(toProducts);
-      setProducts(details);
-    } catch {
-      console.log("Error fetching filtered data:");
-    }
-  }
-
-  useEffect(componentDidMount, []);
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(productName.toLowerCase()),
+  );
 
   return (
-    <main>
+    <main className="mx-auto max-w-4xl p-6">
       <CarouselItems />
-      <p>{"didMount: " + didMount}</p>
 
-      <section>{products}</section>
+      <Search setData={setSearchData} />
+
+      <p>Did mount: {didMount.toString()}</p>
+
+      <p>
+        Searching for: <strong>{productName}</strong>
+      </p>
+
+      <section>{filteredProducts.map(toProducts)}</section>
     </main>
   );
 }
+
+// Added contolled inputs
+// import { useEffect, useState } from "react";
+// import { CarouselItems } from "../components/CarouselItems";
+// import { Search } from "../components/Search";
+
+// export function Products() {
+//   const [products, setProducts] = useState([]);
+//   const [searchData, setSearchData] = useState([]);
+//   const [didMount, setDidMount] = useState(false);
+
+//   useEffect(componentDidMount, []);
+
+//   function componentDidMount() {
+//     setDidMount(true);
+//     handleData();
+//   }
+
+//   async function handleData() {
+//     try {
+//       const response = await fetch("https://fakestoreapi.com/products");
+//       const results = await response.json();
+
+//       setProducts(results);
+//     } catch (error) {
+//       console.error("Error fetching initial data:", error);
+//     }
+//   }
+
+//   function toProducts(dataItem, index) {
+//     const key = index + dataItem.id;
+
+//     return (
+//       <details key={key}>
+//         <summary>{dataItem.title}</summary>
+
+//         <figure>
+//           <img src={dataItem.image} alt={dataItem.title} />
+
+//           <figcaption>
+//             ${dataItem.price} - {dataItem.category}
+//           </figcaption>
+//         </figure>
+//       </details>
+//     );
+//   }
+
+//   const productName = searchData[0]?.name || "";
+
+//   const filteredProducts = products.filter((product) =>
+//     product.title.toLowerCase().includes(productName.toLowerCase()),
+//   );
+
+//   return (
+//     <main>
+//       <CarouselItems />
+
+//       <Search setData={setSearchData} />
+
+//       <p>{"didMount: " + didMount}</p>
+
+//       <p>
+//         Searching for: <strong>{productName}</strong>
+//       </p>
+
+//       <section>{filteredProducts.map(toProducts)}</section>
+//     </main>
+//   );
+// }
+
+// import { CarouselItems } from "../components/CarouselItems";
+// import { useState } from "react";
+// import { useEffect } from "react";
+
+// export function Products() {
+
+//   const [products, setProducts] = useState([]);
+//   const [didMount, setDidMount] = useState(false);
+
+//   // Defined inside Products so they inherit setDidMount and setProducts closures
+//   function componentDidMount() {
+//     setDidMount(true);
+//     handleData();
+//   }
+
+//   async function handleData() {
+//     try {
+//       const response = await fetch("https://fakestoreapi.com/products");
+//       const results = await response.json();
+//       const details = results.map(toProducts);
+//       setProducts(details);
+//     } catch (error) {
+//       console.error("Error fetching initial data:", error);
+//     }
+//   }
+
+//   function toProducts(dataItem, index) {
+//     const key = index + dataItem.id;
+//     return (
+//       <details key={key}>
+//         <summary>{dataItem.title}</summary>
+//         <figure>
+//           <img src={dataItem.image} alt={dataItem.title} />
+//           <figcaption>
+//             ${dataItem.price} - {dataItem.category}
+//           </figcaption>
+//         </figure>
+//       </details>
+//     );
+//   }
+
+//   async function handleSubmit(event) {
+//     event.preventDefault();
+//     const form = event.target;
+//     const data = {
+//       data: form.elements.products.value,
+//     };
+
+//     const dataString = new URLSearchParams(data).toString();
+//     try {
+//       const response = await fetch(
+//         `https://fakestoreapi.com/products?${dataString}`,
+//       );
+//       const results = await response.json();
+//       const details = results.map(toProducts);
+//       setProducts(details);
+//     } catch {
+//       console.log("Error fetching filtered data:");
+//     }
+//   }
+
+//   useEffect(componentDidMount, []);
+
+//   return (
+//     <main>
+//       <CarouselItems />
+//       <p>{"didMount: " + didMount}</p>
+
+//       <section>{products}</section>
+//     </main>
+//   );
+// }
 
 // DidMount not working here
 // import { CarouselItems } from "../components/CarouselItems";
