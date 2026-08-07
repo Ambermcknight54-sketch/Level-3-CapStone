@@ -8,15 +8,15 @@
 // import { About } from "./pages/About";
 // import { Navbar } from "./components/Navbar";
 // import { Footer } from "./components/Footer";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Header } from "./components/Header.jsx";
-import { Home } from "./pages/Home.jsx";
 import { Footer } from "./components/Footer.jsx";
-import { Login } from "./pages/Login.jsx";
-import { Navbar } from "./components/Navbar.jsx";
+import { Home } from "./pages/Home.jsx";
 import { Products } from "./pages/Products.jsx";
-import { Page404 } from "./components/Page404.jsx";
+// import { Page404 } from "./components/Page404.jsx";
+// import { SignIn } from "./pages/SignIn.jsx";
 
 function App() {
   return (
@@ -24,14 +24,12 @@ function App() {
       <div className="app-container">
         <Header />
 
-        <Navbar />
-
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/signin" element={<SignIn />} /> */}
             <Route path="/products" element={<Products />} />
-            <Route path="*" element={<Page404 />} />
+            {/* <Route path="*" element={<Page404 />} /> */}
           </Routes>
         </main>
 

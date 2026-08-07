@@ -13,7 +13,7 @@
 }
 
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities
 
 p {
   @apply leading-[1.6];

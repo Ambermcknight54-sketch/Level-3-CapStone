@@ -1,7 +1,10 @@
 import { CarouselItems } from "../components/CarouselItems";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export function Products() {
+  CarouselItems();
+
   const [products, setProducts] = useState([]);
   const [didMount, setDidMount] = useState(false);
 

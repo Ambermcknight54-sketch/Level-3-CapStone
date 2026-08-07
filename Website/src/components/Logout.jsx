@@ -65,6 +65,7 @@ export function Logout({ setLogin }) {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
+                    q
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor">
@@ -94,8 +95,8 @@ export function Logout({ setLogin }) {
                 Cancel
               </button>
               <button
-                type="button"
                 onClick={handleLogout}
+                type="button"
                 className="inline-block rounded bg-red-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 focus:outline-none">
                 Confirm Logout
               </button>
@@ -107,19 +108,19 @@ export function Logout({ setLogin }) {
   );
 }
 
-// import {} from "../hooks/";
+import {} from "../hooks/";
 
-// export function Logout({ setLogin }) {
-//   function handleLogout() {
-//     setLogin(null);
-//   }
+export function Logout({ setLogin }) {
+  function handleLogout() {
+    setLogin(null);
+  }
 
-//   return (
-//     <button
-//       type="button"
-//       onClick={handleLogout}
-//       className="inline-block rounded bg-red-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 focus:outline-none">
-//       Log Out
-//     </button>
-//   );
-// }
+  return (
+    <button
+      type="button"
+      onClick={handleLogout}
+      className="inline-block rounded bg-red-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 focus:outline-none">
+      Log Out
+    </button>
+  );
+}

@@ -1,8 +1,6 @@
-// main.jsx
-// import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 import App from "./App.jsx";
 
 const container = document.getElementById("root");
@@ -10,9 +8,15 @@ const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
-    <App />
+    <App />,
   </BrowserRouter>,
 );
+
+// root.render(
+//   <BrowserRouter>
+//     <App />
+//   </BrowserRouter>,
+// );
 
 // may need this code again
 // ReactDOM.render(<App />, document.getElementById("root"));
@@ -25,4 +29,10 @@ root.render(
 //   <StrictMode>
 //   <App />,
 //   </StrictMode>,
+// );
+
+// root.render(
+//   <BrowserRouter>
+//     <App />
+//   </BrowserRouter>,
 // );

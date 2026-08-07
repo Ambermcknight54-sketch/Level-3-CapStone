@@ -1,8 +1,7 @@
-import { useEffect } from "react";
-import { Carousel, initTWE } from "tw-elements";
+import { useCarouselTWE } from "../hooks/useCarouselTWE";
 
 export function CarouselItems() {
-  useEffect(componentDidMount, []);
+  useCarouselTWE();
   return (
     <div
       id="carouselExampleCaptions"
@@ -140,7 +139,4 @@ export function CarouselItems() {
       </button>
     </div>
   );
-  function componentDidMount() {
-    initTWE({ Carousel });
-  }
 }

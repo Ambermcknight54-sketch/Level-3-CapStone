@@ -1,24 +1,28 @@
 import { Fragment, useState } from "react";
-import { useInputTWE } from "../hooks/useInputTWE";
 import { usePrisma } from "../hooks/usePrisma";
 import { useLogin } from "../hooks/useLogin";
 import { DbPassword } from "../components/DbPassword";
-import { Authentication } from "../components/Authentication";
+// import { Page404 } from "../components/Page404";
+import { Login } from "../components/Login";
+import { Logout } from "../components/Logout";
 
-export function Login() {
-  useInputTWE();
+export function SignIn() {
   const [password, setPassword] = useState();
-  const [login, setLogin] = useState();
-  const [data, setData] = useState([]);
-
   const prisma = usePrisma(password);
+  const [data, setData] = useState([]);
+  const [login, setLogin] = useState();
   const user = useLogin(prisma, login);
+
+  let component = <Login setLogin={setLogin} />;
+  if (user) component = <p>You are logged in.</p>;
 
   return (
     <main>
       <DbPassword setPassword={setPassword} />
-      <Authentication setLogin={setLogin} user={user} />
-      {/* <Create prisma={prisma} setData={setData} /> */}
+      {component}
+      <Login />
+      <Logout />
+      <Page404 />
       <output>
         <dl>{data.map(toDetails)}</dl>
       </output>
@@ -26,18 +30,18 @@ export function Login() {
   );
 }
 
-function toDetails(item, index) {
-  const key = index + item.name;
-  return (
-    <Fragment key={key}>
-      <dt>{item.name}</dt>
-      <dd>
-        <img src={item.src} alt={item.name} />
-        {item.price}
-      </dd>
-    </Fragment>
-  );
-}
+// function toDetails(item, index) {
+//   const key = index + item.name;
+//   return (
+//     <Fragment key={key}>
+//       <dt>{item.name}</dt>
+//       <dd>
+//         <img src={item.src} alt={item.name} />
+//         {item.price}
+//       </dd>
+//     </Fragment>
+//   );
+// }
 
 // function componentDidUpdate() {
 //   if (password) {
