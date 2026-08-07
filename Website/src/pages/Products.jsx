@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { Component, useEffect, useState } from "react";
 import { CarouselItems } from "../components/CarouselItems";
-import { Search } from "../components/Search";
 
 export function Products() {
   const [products, setProducts] = useState([]);
