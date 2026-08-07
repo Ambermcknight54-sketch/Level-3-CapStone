@@ -20,26 +20,26 @@ export function Products() {
 
       setProducts(results);
     } catch (error) {
-      console.error("Error fetching products:", error);
+      console.error("Error fetching initial data:", error);
     }
   }
 
-  function toProducts(product, index) {
-    const key = index + product.id;
+  function toProducts(dataItem, index) {
+    const key = index + dataItem.id;
 
     return (
       <details key={key} className="mb-4 rounded border p-4">
-        <summary className="cursor-pointer font-bold">{product.title}</summary>
+        <summary className="cursor-pointer font-bold">{dataItem.title}</summary>
 
         <figure className="mt-4">
           <img
-            src={product.image}
-            alt={product.title}
+            src={dataItem.image}
+            alt={dataItem.title}
             className="h-48 w-48 object-contain"
           />
 
           <figcaption>
-            ${product.price} - {product.category}
+            ${dataItem.price} - {dataItem.category}
           </figcaption>
         </figure>
       </details>
@@ -53,12 +53,10 @@ export function Products() {
   );
 
   return (
-    <main className="mx-auto max-w-4xl p-6">
+    <main>
       <CarouselItems />
 
-      <Search setData={setSearchData} />
-
-      <p>Did mount: {didMount.toString()}</p>
+      <p>{"didMount: " + didMount}</p>
 
       <p>
         Searching for: <strong>{productName}</strong>
